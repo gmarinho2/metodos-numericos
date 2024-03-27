@@ -1,20 +1,26 @@
-double secante(double (*funcao_ptr)(double), double x0, double x1, double epsilon)
+double secante(double (*f)(double), double epsilon, double x0, double x1)
 {
-    double erroAbsoluto;
-    double x_proximo;
+    //não requer a derivada da função 
+    //a cada iteração, os pontos são atualizados com base na interseção da secante com o eixo x
+    //esse método é menos estável, mas não exige a derivada da função.
 
+    double erroAbsoluto = fabs(x1 - x0);
+    double fx0 = f(x0);
+    double fx1 = f(x1);
+    int i = 0;
     do 
     {
-        x_proximo = (x0*funcao_ptr(x1)-x1*funcao_ptr(x0)) / funcao_ptr(x1)-funcao_ptr(x0);
+        double x_proximo = (x0*fx1-x1*fx0) / (fx1-fx0);
         erroAbsoluto = fabs(x1 - x0);
+        fx0 = fx1;
+        fx1 = f(x_proximo);
 
-        //atualiza variaveis:
-        double aux = x1;
+        
+        printf("Iteração %d: x atual é:%lf\n", i = i+1, x_proximo);
+        x0 = x1;
         x1 = x_proximo;
-        x0 = aux;
 
-        printf("O x atual é: %lf\n", x0);
-    } while (erroAbsoluto > epsilon);
+    } while (erroAbsoluto > epsilon && f(x1) != 0);
 
-    return x0;
+    return x1;
 }
