@@ -40,7 +40,7 @@ int main(int argc, char const *argv[])
     {
         printf("Método: Bisseção\n");
         printf("Erro máximo: %s\n", argv[2]);
-        printf("Resp: %.20lf\n", bissecao(f2, 0.0, 1.0, 1E-10));
+        printf("Resp: %.20lf\n", bissecao(f2, episilon, x0, x1);
     }
     return 0;
 }
