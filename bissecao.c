@@ -22,7 +22,7 @@ double bissecao(double (*f)(double), double epsilon, double a, double b)
         {
             a = x1;
         }
-        printf("Iteração %d: x atual é: %lf\n", i = i+1, x0);
+        printf("-----Iteração %d-----\nx atual é: %lf\n\n", i = i+1, x0);
     } while (erroAbsoluto > epsilon && f(x1) != 0);
 
     return x0;
